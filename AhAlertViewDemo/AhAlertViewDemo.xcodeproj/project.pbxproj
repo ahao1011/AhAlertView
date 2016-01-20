@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E05D37491C4D4ADD00ADD57D /* AlertView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E05D37471C4D4ADD00ADD57D /* AlertView.a */; };
-		E05D374A1C4D4ADD00ADD57D /* Resoure.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E05D37481C4D4ADD00ADD57D /* Resoure.bundle */; };
+		E04ED1271C4F80E10083873D /* AhAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E04ED1261C4F80E10083873D /* AhAlertView.m */; };
+		E04ED12A1C4F80FC0083873D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E04ED1291C4F80FC0083873D /* UIView+Extension.m */; };
+		E04ED12E1C4F81160083873D /* ActionsheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E04ED12C1C4F81160083873D /* ActionsheetCell.m */; };
+		E04ED12F1C4F81160083873D /* ActionsheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E04ED12D1C4F81160083873D /* ActionsheetCell.xib */; };
+		E04ED1311C4F813C0083873D /* Resoure.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E04ED1301C4F813C0083873D /* Resoure.bundle */; };
 		E0969BFA1C4CDF5E006F5BDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0969BF91C4CDF5E006F5BDC /* main.m */; };
 		E0969BFD1C4CDF5E006F5BDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0969BFC1C4CDF5E006F5BDC /* AppDelegate.m */; };
 		E0969C001C4CDF5E006F5BDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0969BFF1C4CDF5E006F5BDC /* ViewController.m */; };
@@ -37,9 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E05D37461C4D4ADD00ADD57D /* AhAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AhAlertView.h; sourceTree = "<group>"; };
-		E05D37471C4D4ADD00ADD57D /* AlertView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlertView.a; sourceTree = "<group>"; };
-		E05D37481C4D4ADD00ADD57D /* Resoure.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resoure.bundle; sourceTree = "<group>"; };
+		E04ED1251C4F80E10083873D /* AhAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AhAlertView.h; sourceTree = "<group>"; };
+		E04ED1261C4F80E10083873D /* AhAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AhAlertView.m; sourceTree = "<group>"; };
+		E04ED1281C4F80FC0083873D /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		E04ED1291C4F80FC0083873D /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		E04ED12B1C4F81160083873D /* ActionsheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsheetCell.h; sourceTree = "<group>"; };
+		E04ED12C1C4F81160083873D /* ActionsheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsheetCell.m; sourceTree = "<group>"; };
+		E04ED12D1C4F81160083873D /* ActionsheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionsheetCell.xib; sourceTree = "<group>"; };
+		E04ED1301C4F813C0083873D /* Resoure.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resoure.bundle; sourceTree = "<group>"; };
 		E0969BF51C4CDF5E006F5BDC /* AhAlertViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AhAlertViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0969BF91C4CDF5E006F5BDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0969BFB1C4CDF5E006F5BDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E05D37491C4D4ADD00ADD57D /* AlertView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,16 +91,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E05D37451C4D4ADD00ADD57D /* AhAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				E05D37461C4D4ADD00ADD57D /* AhAlertView.h */,
-				E05D37471C4D4ADD00ADD57D /* AlertView.a */,
-				E05D37481C4D4ADD00ADD57D /* Resoure.bundle */,
-			);
-			path = AhAlertView;
-			sourceTree = "<group>";
-		};
 		E0969BEC1C4CDF5E006F5BDC = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +114,14 @@
 		E0969BF71C4CDF5E006F5BDC /* AhAlertViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				E05D37451C4D4ADD00ADD57D /* AhAlertView */,
+				E04ED1301C4F813C0083873D /* Resoure.bundle */,
+				E04ED12B1C4F81160083873D /* ActionsheetCell.h */,
+				E04ED12C1C4F81160083873D /* ActionsheetCell.m */,
+				E04ED12D1C4F81160083873D /* ActionsheetCell.xib */,
+				E04ED1281C4F80FC0083873D /* UIView+Extension.h */,
+				E04ED1291C4F80FC0083873D /* UIView+Extension.m */,
+				E04ED1251C4F80E10083873D /* AhAlertView.h */,
+				E04ED1261C4F80E10083873D /* AhAlertView.m */,
 				E0969BFB1C4CDF5E006F5BDC /* AppDelegate.h */,
 				E0969BFC1C4CDF5E006F5BDC /* AppDelegate.m */,
 				E0969BFE1C4CDF5E006F5BDC /* ViewController.h */,
@@ -262,8 +266,9 @@
 			files = (
 				E0969C081C4CDF5E006F5BDC /* LaunchScreen.storyboard in Resources */,
 				E0969C051C4CDF5E006F5BDC /* Assets.xcassets in Resources */,
+				E04ED1311C4F813C0083873D /* Resoure.bundle in Resources */,
 				E0969C031C4CDF5E006F5BDC /* Main.storyboard in Resources */,
-				E05D374A1C4D4ADD00ADD57D /* Resoure.bundle in Resources */,
+				E04ED12F1C4F81160083873D /* ActionsheetCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +293,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E04ED12A1C4F80FC0083873D /* UIView+Extension.m in Sources */,
+				E04ED12E1C4F81160083873D /* ActionsheetCell.m in Sources */,
+				E04ED1271C4F80E10083873D /* AhAlertView.m in Sources */,
 				E0969C001C4CDF5E006F5BDC /* ViewController.m in Sources */,
 				E0969BFD1C4CDF5E006F5BDC /* AppDelegate.m in Sources */,
 				E0969BFA1C4CDF5E006F5BDC /* main.m in Sources */,
