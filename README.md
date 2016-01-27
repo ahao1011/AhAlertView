@@ -10,12 +10,11 @@
            NSLog(@"确认按钮被点击");
   }];
 使用类方法时,因为弹框是加载到window上的,  在何时的地方要进行隐藏,隐藏时,弹框会从Window移除.
+
+
 /**类方法隐藏*/
 + (void)hiddenFromWindow;
 
-
-
-  
 也可以使用对象方法创建,
 AhAlertView *view = [[AhAlertView alloc]initWithTitle:@"提示" message:@"这是2个按钮的对象方法展示" leftButtonTitle:@"取消" leftButtonHandle:^{
     NSLog(@"取消按钮被点击");
@@ -23,21 +22,18 @@ AhAlertView *view = [[AhAlertView alloc]initWithTitle:@"提示" message:@"这是
     NSLog(@"确认按钮被点击");
  }];
  
- 使用对象方法时要使用 
-/** 展示 */
-- (void)show;
-进行弹框展示, 在合适的地方用
-/** 隐藏 */
-- (void)hidden;
-来实现弹框的隐藏.
+ 使用对象方法时要使用
+ 
 
+[view show]进行弹框展示, 
+在合适的地方用[view hidden] 来实现弹框的隐藏.
 
 注意: Action_target中实现Action方法时要记得手动隐藏 
 隐藏方法如下:
-/** 隐藏 */
-- (void)hidden;
-/**类方法隐藏*/
-+ (void)hiddenFromWindow;
+
+   - (void)hidden;
+
+   + (void)hiddenFromWindow;
 
 .h里暴露的对象属性可以针对弹框做一些文字颜色,大小,和弹框各部分的背景色的设置.
 
