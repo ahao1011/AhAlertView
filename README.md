@@ -6,14 +6,13 @@
 同一效果使用了Action-Target和Block实现,具体的实现方法还是参看Demo吧,确实没什么难的技术点.
 
 可利用类方法快速创建一个简洁弹窗 ,例如:
+
 [AhAlertView alertViewWithTitle:@"提示" message:@"这个也可以使用Target-Action" confirmButtonTitle:@"确认" confirmButtonHandle:^{
            NSLog(@"确认按钮被点击");
   }];
 使用类方法时,因为弹框是加载到window上的,  在何时的地方要进行隐藏,隐藏时,弹框会从Window移除.
 
-
-/**类方法隐藏*/
-+ (void)hiddenFromWindow;
+隐藏方法: [AhAlertView hiddenFromWindow];
 
 也可以使用对象方法创建,
 AhAlertView *view = [[AhAlertView alloc]initWithTitle:@"提示" message:@"这是2个按钮的对象方法展示" leftButtonTitle:@"取消" leftButtonHandle:^{
@@ -22,47 +21,17 @@ AhAlertView *view = [[AhAlertView alloc]initWithTitle:@"提示" message:@"这是
     NSLog(@"确认按钮被点击");
  }];
  
- 使用对象方法时要使用
- 
-
-[view show]进行弹框展示, 
-在合适的地方用[view hidden] 来实现弹框的隐藏.
-
+ 使用对象方法时要使时用对象方法[view show]进行弹框展示, 
+ 在合适的地方用[view hidden] 来实现弹框的隐藏.
 注意: Action_target中实现Action方法时要记得手动隐藏 
 隐藏方法如下:
 
-   - (void)hidden;
+   [view hidden]; //  对象方法
 
-   + (void)hiddenFromWindow;
+   [AhAlertView hiddenFromWindow];  //  类方法
 
-.h里暴露的对象属性可以针对弹框做一些文字颜色,大小,和弹框各部分的背景色的设置.
+二.    .h里暴露的对象属性可以针对弹框做一些文字颜色,大小,和弹框各部分的背景色的设置.
 
-/** alertView的背景色 */
-@property (nonatomic,strong)UIColor *alertViewColor;
-/** 按钮字体颜色 */
-@property (nonatomic,strong)UIColor *BtnColor;
-/** 左按钮字体颜色 */
-@property (nonatomic,strong)UIColor *leftBtnColor;
-/** 右按钮字体颜色 */
-@property (nonatomic,strong)UIColor *rightBtnColor;
-/** 提示字体颜色 */
-@property (nonatomic,strong)UIColor *titleColor;
-/** 信息字体颜色 */
-@property (nonatomic,strong)UIColor *MessageColor;
-/** 其他信息字体颜色 */
-@property (nonatomic,strong)UIColor *OtherMessageColor;
-/** 提示框背景颜色 */
-@property (nonatomic,strong)UIColor *TitleBackColor;
-/** 按钮文字大小 */
-@property (nonatomic,assign)CGFloat buttonFontSize;
-/** 左按钮文字大小 */
-@property (nonatomic,assign)CGFloat LeftbuttonFontSize;
-/** 右按钮文字大小 */
-@property (nonatomic,assign)CGFloat RightbuttonFontSize;
-/** 正文文字大小 */
-@property (nonatomic,assign)CGFloat messageFontSize;
-/** 抬头文字大小 */
-@property (nonatomic,assign)CGFloat titleFontSize;
 
 
 
