@@ -29,6 +29,8 @@ AhAlertView *view = [[AhAlertView alloc]initWithTitle:@"提示" message:@"这是
    [view hidden]; //  对象方法
 
    [AhAlertView hiddenFromWindow];  //  类方法
+  
+而Block方法则不用再关注隐藏,已在.m内实现. 
 
 二.    .h里暴露的对象属性可以针对弹框做一些文字颜色,大小,和弹框各部分的背景色的设置.
 
