@@ -177,6 +177,7 @@ typedef enum {  // 顶部提示信息的类型
 *  @param rightAction      右边按钮点击事件
 */
 
+
 + (void)alertViewWithTitle:(NSString *)title message:(NSString *)message target:(id)target  leftButtonTitle:(NSString *)leftButtonTitle eftButtonAction:(SEL)leftAction rightButtonTitle:(NSString *)rightButtonTitle rightButtonAction:(SEL)rightAction;
 #pragma mark -  2个按钮的提示框Block
 /**
