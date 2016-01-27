@@ -1,5 +1,5 @@
 # AhAlertView
-一. 这是一款简单的弹框集合,集合了顶部弹框,AlertView和sheetView, 其中顶部弹框照片在Resoure.bundle内,可以根据自己的需求进行更换;AlertView模仿的原生弹框,通过Block的实现
+一. 这是一款简单的弹框集合,集合了顶部弹框,AlertView和sheetView, 其中顶部弹框图片在Resoure.bundle内,可以根据自己的需求进行更换;AlertView模仿的原生弹框,通过Block的实现
 让代码块显得紧凑,宜读. 底部的sheetView弹框加了一些动画进去,不需要的可以取消掉,目前该弹框是应用到我们公司自己的项目,你可以根据自己的需求进行更改,
 或者@我, 邮箱zth0218@126.com  QQ:656205255 
 
