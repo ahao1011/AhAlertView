@@ -10,11 +10,11 @@
 #else // 发布阶段
 #define AhLog(...)
 #endif
-
-#define errorColor   AHColor(226,53,41)
-#define sucessColor  AHColor(37,199,89)
-#define waringColor  AHColor(223,105,10)
-#define infoColor    AHColor(21,148,255)
+#define Color(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define errorColor   Color(226,53,41)
+#define sucessColor  Color(37,199,89)
+#define waringColor  Color(223,105,10)
+#define infoColor    Color(21,148,255)
 #define TopShowDelayTime  3
 #define cellHeight 50
 #define K_marrk  8 //  间隙
@@ -75,11 +75,13 @@ typedef enum {  // 顶部提示信息的类型
 /**抬头承载的底层View*/
 @property (nonatomic,strong)UIView *titleView;
 /**左饰件*/
-@property (nonatomic,copy)UILabel *leftLable;
+@property (nonatomic,strong)UILabel *leftLable;
 /**左图片*/
-@property (nonatomic,copy)UIImageView *leftImg;
+@property (nonatomic,strong)UIImageView *leftImg;
 /**中间lable*/
-@property (nonatomic,copy)UILabel *midLable;
+@property (nonatomic,strong)UILabel *midLable;
+/**中间UitextView*/
+@property (nonatomic,strong)UITextView *textView;
 /**操作手柄*/
 @property (nonatomic,copy)AhAlertViewBlock leftHandle;
 @property (nonatomic,copy)AhAlertViewBlock rightHandle;
@@ -340,10 +342,47 @@ typedef enum {  // 顶部提示信息的类型
     
     [view show];
 }
+#pragma mark -  2个按钮 外部传入一个长文本
+
++ (void)alertViewWithTitle:(NSString *)title
+           DescString:(NSString*)DescString
+               target:(id)target
+      leftButtonTitle:(NSString *)leftButtonTitle
+      eftButtonAction:(SEL)leftAction
+     rightButtonTitle:(NSString *)rightButtonTitle
+    rightButtonAction:(SEL)rightAction{
+    
+    
+    AhAlertView *view = [[AhAlertView alloc]initWithTitle:title DescString:DescString target:target leftButtonTitle:leftButtonTitle eftButtonAction:leftAction rightButtonTitle:rightButtonTitle rightButtonAction:rightAction];
+    [view show];
+    
+}
+#pragma mark -  2个按钮 外部传入一个长文本 block
++ (void)alertViewWithTitle:(NSString *)title
+           DescString:(NSString*)DescString
+      leftButtonTitle:(NSString *)leftButtonTitle
+     leftButtonHandle:(void(^)())leftHandel
+     rightButtonTitle:(NSString *)rightButtonTitle
+    rightButtonHandle:(void(^)())rightHandel{
+    
+    AhAlertView *view = [[AhAlertView alloc]initWithTitle:title DescString:DescString leftButtonTitle:leftButtonTitle leftButtonHandle:leftHandel rightButtonTitle:rightButtonTitle rightButtonHandle:rightHandel];
+    [view show];
+}
 
 
 // ************************************************************************************************************
 #pragma mark -  数据处理
+
+//- (void)setViewHeight:(CGFloat)ViewHeight{
+//    
+//    CGFloat height = ViewHeight;
+//    CGFloat left = 30;
+//    CGFloat width = K_Screen_Width-2*left;
+//    CGFloat y = (K_Screen_Height - height)*.5;
+//    self.frame = CGRectMake(left, y, width, height);
+//
+//    [self setNeedsLayout];
+//}
 
 - (void)setOtherMessageColor:(UIColor *)OtherMessageColor{
     
@@ -735,6 +774,9 @@ typedef enum {  // 顶部提示信息的类型
     }
     return self;
 }
+
+
+
 #pragma mark -  增加富文本
 - (void)creatAttributedString:(NSMutableAttributedString*)AttributedString{
     
@@ -743,6 +785,46 @@ typedef enum {  // 顶部提示信息的类型
     UITapGestureRecognizer *Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(messageAction)];
     [self.mesLabel addGestureRecognizer:Recognizer];
 }
+
+#pragma mark -  2个按钮 外部传入1个富文本 Block
+- (instancetype)initWithTitle:(NSString *)title DescString:(NSString*)DescString leftButtonTitle:(NSString *)leftButtonTitle leftButtonHandle:(void(^)())leftHandel rightButtonTitle:(NSString *)rightButtonTitle rightButtonHandle:(void(^)())rightHandel{
+    
+    self = [[AhAlertView alloc]initWithTitle:title message:nil leftButtonTitle:leftButtonTitle leftButtonHandle:leftHandel rightButtonTitle:rightButtonTitle rightButtonHandle:rightHandel];
+    if (self) {
+        [self creatDescString:DescString];
+    }
+    return self;
+    
+}
+#pragma mark -  2个按钮 外部传入一个长文本
+- (instancetype)initWithTitle:(NSString *)title DescString:(NSString*)DescString target:(id)target  leftButtonTitle:(NSString *)leftButtonTitle eftButtonAction:(SEL)leftAction rightButtonTitle:(NSString *)rightButtonTitle rightButtonAction:(SEL)rightAction{
+    self =[[AhAlertView alloc]initWithTitle:title message:nil target:target leftButtonTitle:leftButtonTitle eftButtonAction:leftAction rightButtonTitle:rightButtonTitle rightButtonAction:rightAction];
+    if (self) {
+        [self creatDescString:DescString];
+    }
+    return self;
+}
+
+#pragma mark -  增加UitextView
+
+- (void)creatDescString:(NSString *)DescString{
+    
+    [self.mesLabel removeFromSuperview];
+    
+    UITextView *textView = [[UITextView alloc]initWithFrame:self.messageView.bounds];
+    textView.scrollEnabled = YES;
+    [textView resignFirstResponder];
+    textView.backgroundColor = [UIColor whiteColor];
+    textView.textColor = [UIColor blackColor];
+    textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    textView.text = DescString;
+    textView.font = [UIFont systemFontOfSize:14];
+    textView.textAlignment = NSTextAlignmentCenter;
+    [self.messageView addSubview:textView];
+    self.textView = textView;
+    
+}
+
 
 #pragma mark -  隐藏
 
@@ -987,7 +1069,7 @@ typedef enum {  // 顶部提示信息的类型
             case TopViewTypeWaring:{
                 leftLable.backgroundColor = waringColor;
                 mid.backgroundColor = waringColor;
-                _leftImg.image = [UIImage imageNamed:@"wa"];
+                _leftImg.image = [UIImage imageNamed:@"Resoure.bundle/icon/wa"];
             }
                 break;
                 
@@ -1095,8 +1177,8 @@ typedef enum {  // 顶部提示信息的类型
     [self addSubview:_cancleBtn];
     [_cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
     [_cancleBtn setTitle:@"取消" forState:UIControlStateHighlighted];
-    [_cancleBtn setTitleColor:AHColor(84, 157, 249) forState:UIControlStateNormal];
-    [_cancleBtn setTitleColor:AHColor(84, 157, 249) forState:UIControlStateHighlighted];
+    [_cancleBtn setTitleColor:Color(84, 157, 249) forState:UIControlStateNormal];
+    [_cancleBtn setTitleColor:Color(84, 157, 249) forState:UIControlStateHighlighted];
 
     [_cancleBtn addTarget:self action:@selector(cancleActio) forControlEvents:UIControlEventTouchUpInside];
     _cancleBtn.layer.cornerRadius = K_cornerRadius;
@@ -1139,7 +1221,7 @@ typedef enum {  // 顶部提示信息的类型
     
     ActionsheetCell *cell = [tableView dequeueReusableCellWithIdentifier:K_ActionsheetCell];
     cell.nameLable.text = _titleArr[indexPath.row];
-    cell.nameLable.textColor = AHColor(84, 157, 249);
+    cell.nameLable.textColor = Color(84, 157, 249);
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     return cell;
 }

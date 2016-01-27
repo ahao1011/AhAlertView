@@ -39,8 +39,12 @@ typedef enum {  // 顶部提示信息的类型
 @property (nonatomic,weak)id<AhAlertViewDelegate> delegate;
 
 
-/** 提示框中的富文本lable */
-@property (nonatomic,strong)UILabel *AdsLable;
+
+
+
+
+
+
 /** alertView的背景色 */
 @property (nonatomic,strong)UIColor *alertViewColor;
 /** 按钮字体颜色 */
@@ -62,11 +66,12 @@ typedef enum {  // 顶部提示信息的类型
 /** 左按钮文字大小 */
 @property (nonatomic,assign)CGFloat LeftbuttonFontSize;
 /** 右按钮文字大小 */
-@property (nonatomic,assign)CGFloat RightbuttonFontSize;
+@property (nonatomic,assign)CGFloat             RightbuttonFontSize;
 /** 正文文字大小 */
-@property (nonatomic,assign)CGFloat messageFontSize;
+@property (nonatomic,assign)CGFloat   messageFontSize;
 /** 抬头文字大小 */
-@property (nonatomic,assign)CGFloat titleFontSize;
+@property (nonatomic,assign)CGFloat       titleFontSize;
+
 
 
 /** 展示 */
@@ -177,7 +182,6 @@ typedef enum {  // 顶部提示信息的类型
 *  @param rightAction      右边按钮点击事件
 */
 
-
 + (void)alertViewWithTitle:(NSString *)title message:(NSString *)message target:(id)target  leftButtonTitle:(NSString *)leftButtonTitle eftButtonAction:(SEL)leftAction rightButtonTitle:(NSString *)rightButtonTitle rightButtonAction:(SEL)rightAction;
 #pragma mark -  2个按钮的提示框Block
 /**
@@ -220,6 +224,44 @@ typedef enum {  // 顶部提示信息的类型
                     confirmbuttonTitle:(NSString *)confirmbuttonTitle
                          confirmHandel:(void(^)())confirmHandel
                             textHandel:(void(^)(NSString *text))textHandel;
+
+#pragma mark -  2个按钮 外部传入一个长文本
+/**
+ *  2个按钮 外部传入一个长文本 1按钮时 leftButtonTitle以及leftAction置为nil
+ *
+ *  @param title            抬头提示文字
+ *  @param DescString       长文本
+ *  @param target           target
+ *  @param leftButtonTitle  左边按钮文字
+ *  @param leftAction       左边按钮Action
+ *  @param rightButtonTitle 右边按钮文字
+ *  @param rightAction      右边按钮Action
+ */
++ (void)alertViewWithTitle:(NSString *)title
+                DescString:(NSString*)DescString
+                    target:(id)target
+           leftButtonTitle:(NSString *)leftButtonTitle
+           eftButtonAction:(SEL)leftAction
+          rightButtonTitle:(NSString *)rightButtonTitle
+         rightButtonAction:(SEL)rightAction;
+
+#pragma mark -  2个按钮 外部传入1个长文本 Block
+/**
+ *   2个按钮 外部传入1个长文本 Block 1按钮时 leftButtonTitle以及leftAction置为nil
+ *
+ *  @param title            抬头提示文字
+ *  @param DescString       长文本
+ *  @param leftButtonTitle  左边按钮文字
+ *  @param leftHandel       左句柄
+ *  @param rightButtonTitle 右边按钮文字
+ *  @param rightHandel      右句柄
+ */
++ (void)alertViewWithTitle:(NSString *)title
+                DescString:(NSString*)DescString
+           leftButtonTitle:(NSString *)leftButtonTitle
+          leftButtonHandle:(void(^)())leftHandel
+          rightButtonTitle:(NSString *)rightButtonTitle
+         rightButtonHandle:(void(^)())rightHandel;
 
 #pragma mark - ======= 对象方法
 
@@ -369,6 +411,38 @@ typedef enum {  // 顶部提示信息的类型
                        confirmbuttonTitle:(NSString *)confirmbuttonTitle
                             confirmHandel:(void(^)())confirmHandel
                                textHandel:(void(^)(NSString *text))textHandel;
+#pragma mark -  2个按钮 外部传入一个长文本
+/**
+ *  2个按钮 外部传入一个长文本 1按钮时 leftButtonTitle以及leftAction置为nil
+ *
+ *  @param title            抬头提示文字
+ *  @param DescString       长文本
+ *  @param target           target
+ *  @param leftButtonTitle  左边按钮文字
+ *  @param leftAction       左边按钮Action
+ *  @param rightButtonTitle 右边按钮文字
+ *  @param rightAction      右边按钮Action
+ */
+- (instancetype)initWithTitle:(NSString *)title
+                   DescString:(NSString*)DescString
+                       target:(id)target
+              leftButtonTitle:(NSString *)leftButtonTitle
+              eftButtonAction:(SEL)leftAction
+             rightButtonTitle:(NSString *)rightButtonTitle
+            rightButtonAction:(SEL)rightAction;
+
+#pragma mark -  2个按钮 外部传入1个长文本 Block
+/**
+ *   2个按钮 外部传入1个富文本 Block 1按钮时 leftButtonTitle以及leftAction置为nil
+ *
+ *  @param title            抬头提示文字
+ *  @param DescString       长文本
+ *  @param leftButtonTitle  左边按钮文字
+ *  @param leftHandel       左句柄
+ *  @param rightButtonTitle 右边按钮文字
+ *  @param rightHandel      右句柄
+ */
+- (instancetype)initWithTitle:(NSString *)title DescString:(NSString*)DescString leftButtonTitle:(NSString *)leftButtonTitle leftButtonHandle:(void(^)())leftHandel rightButtonTitle:(NSString *)rightButtonTitle rightButtonHandle:(void(^)())rightHandel;
 #pragma mark -  底部弹出框
 /**
  *  底部弹出框
